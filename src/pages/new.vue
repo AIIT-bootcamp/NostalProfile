@@ -10,8 +10,4 @@ import Create from "../components/Profile/Create.vue";
   </div>
 </template>
 
-<style scoped>
-* {
-  color: red;
-}
-</style>
+<style scoped></style>

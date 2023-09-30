@@ -9,8 +9,4 @@ console.log("hello");
   </div>
 </template>
 
-<style scoped>
-* {
-  color: red;
-}
-</style>
+<style scoped></style>

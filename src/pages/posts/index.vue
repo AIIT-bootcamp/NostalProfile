@@ -11,8 +11,4 @@ const id = parseInt(route.params.id);
   </div>
 </template>
 
-<style scoped>
-* {
-  color: red;
-}
-</style>
+<style scoped></style>
