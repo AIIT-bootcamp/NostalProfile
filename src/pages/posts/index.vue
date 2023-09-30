@@ -6,7 +6,7 @@ const id = parseInt(route.params.id);
 
 <template>
   <div>
-    <h1>Post</h1>
+    <h2>Post</h2>
     <p>post content</p>
   </div>
 </template>

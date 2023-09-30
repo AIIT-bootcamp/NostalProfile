@@ -4,7 +4,6 @@ console.log("hello");
 
 <template>
   <div>
-    <h1>前略プロフ</h1>
     <router-link to="/new">プロフを作る</router-link>
   </div>
 </template>

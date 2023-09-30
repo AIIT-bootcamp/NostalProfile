@@ -4,7 +4,6 @@ import Create from "../components/Profile/Create.vue";
 
 <template>
   <div>
-    <h1>前略プロフィール</h1>
     <p></p>
     <Create />
   </div>
