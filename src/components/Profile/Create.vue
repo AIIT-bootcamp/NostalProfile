@@ -4,6 +4,7 @@ type ProfileField = {
   id: number;
   label: string;
   value: string | number;
+  required?: boolean;
 };
 // interface User {
 //   id: string;
@@ -21,16 +22,19 @@ const _profileFields = [
     id: 1,
     label: "名前",
     value: "",
+    required: true,
   },
   {
     id: 2,
     label: "年齢",
     value: 0,
+    required: true,
   },
   {
     id: 3,
     label: "趣味",
     value: "",
+    required: true,
   },
 ];
 
@@ -62,41 +66,50 @@ const deleteField = (id: number) => {
 </script>
 
 <template>
-  <div>
-    <h2>新規作成</h2>
-    <form @submit.prevent="submitForm">
-      <div v-for="field in profileFields">
-        <label>{{ field.label }}:</label>
-        <span v-if="typeof field.value === 'string'">
-          <input
-            v-model="field.value"
-            :placeholder="`${field.label}を入力してください`"
-            required
-          />
-        </span>
-        <span v-else-if="typeof field.value === 'number'">
-          <input
-            type="number"
-            v-model.number="field.value"
-            :placeholder="`${field.label}を入力してください`"
-            required
-          />
-        </span>
-        <span v-else>
-          <input
-            v-model="field.value"
-            :placeholder="`${field.label}を入力してください`"
-          />
-        </span>
-        <span @click="deleteField(field.id)" class="delete-icon">✖</span>
-      </div>
-      <button type="submit">作成</button>
-    </form>
+  <div class="container">
+    <h2 class="title">新規作成</h2>
     <div>
-      <h2>カスタムフィールドの追加</h2>
-      <form @submit.prevent="addCustomField">
+      <form @submit.prevent="submitForm" class="form">
+        <div v-for="field in profileFields" class="field">
+          <label>{{ field.label }}: </label>
+          <span v-if="typeof field.value === 'string'">
+            <input
+              v-model="field.value"
+              :placeholder="`${field.label}を入力してください`"
+              required
+            />
+          </span>
+          <span v-else-if="typeof field.value === 'number'">
+            <input
+              type="number"
+              v-model.number="field.value"
+              :placeholder="`${field.label}を入力してください`"
+              required
+            />
+          </span>
+          <span v-else>
+            <input
+              v-model="field.value"
+              :placeholder="`${field.label}を入力してください`"
+            />
+          </span>
+          <span
+            v-if="!field.required"
+            @click="deleteField(field.id)"
+            class="delete-icon"
+            >✖</span
+          >
+        </div>
         <div>
-          <label for="label">フィールド名:</label>
+          <button type="submit" class="button">作成</button>
+        </div>
+      </form>
+    </div>
+    <div class="custom-field-container">
+      <h2 class="custum-field-title">カスタムフィールドの追加</h2>
+      <form @submit.prevent="addCustomField" class="custom-field-form">
+        <div class="custom-field">
+          <label for="label">フィールド名: </label>
           <input
             id="label"
             v-model="customFiled.label"
@@ -104,12 +117,96 @@ const deleteField = (id: number) => {
             required
           />
         </div>
-        <button type="submit">フィールド追加</button>
+        <button type="submit" class="button">フィールド追加</button>
       </form>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* ここでスタイリングを追加 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+}
+
+.title {
+  color: #444;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.custum-field-title {
+  color: #444;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+.custom-field-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.custom-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.field > label {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.field > input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: red;
+}
+
+.custom-field-container {
+  margin-top: 40px;
+  width: 80%;
+}
 </style>

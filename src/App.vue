@@ -2,6 +2,7 @@
 
 <template>
   <div>
+    <h1>前略プロフィール</h1>
     <RouterView />
   </div>
 </template>
