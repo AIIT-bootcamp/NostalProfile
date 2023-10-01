@@ -1,7 +1,5 @@
 <script setup lang="ts">
-console.log("About");
-
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../FirebaseConfig";
 
@@ -10,23 +8,18 @@ const isLoading = ref(false);
 const error = ref();
 
 const getNostalProfile = async () => {
-  console.log("getNostalProfile");
   isLoading.value = true;
   try {
     const c = collection(db, "nostal-profiles");
     const s = await getDocs(c);
     data.value = s.docs.map((doc: any) => doc.data());
-    console.log(data.value);
   } catch (e) {
     error.value = e;
   } finally {
     isLoading.value = false;
   }
 };
-
-onMounted(() => {
-  getNostalProfile();
-});
+getNostalProfile();
 </script>
 
 <template>
@@ -36,8 +29,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-* {
-  color: green;
-}
-</style>
+<style scoped></style>
