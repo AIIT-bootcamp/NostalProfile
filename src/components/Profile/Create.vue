@@ -63,6 +63,8 @@ const uploadImage = async () => {
     },
     async () => {
       imageUrl.value = await getDownloadURL(uploadTask.snapshot.ref);
+      console.log(imageUrl.value);
+      return imageUrl.value;
     }
   );
 };
@@ -84,10 +86,14 @@ const randomId = () => {
   return Math.floor(Math.random() * 100000000000000000);
 };
 
+const handleSubmitForm = async () => {
+  await uploadImage();
+  setTimeout(async () => {
+    await submitForm();
+  }, 5000);
+};
 const submitForm = async () => {
   try {
-    uploadImage();
-
     // FIXME: 本当はusernameを"名前"としてprofileFieldsに追加したい
     const putDoc: Profile = {
       id: randomId(),
@@ -112,7 +118,7 @@ const deleteField = (id: number) => {
   <div class="container">
     <div class="vacant-line"></div>
     <div>
-      <form @submit.prevent="submitForm" class="form">
+      <form @submit.prevent="handleSubmitForm" class="form">
         <h2 class="title">新規作成</h2>
         <div class="vacant-line"></div>
         <div v-for="field in profileFields" class="field">

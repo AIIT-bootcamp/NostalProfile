@@ -3,17 +3,18 @@ import { useRoute } from "vue-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { ref, onMounted } from "vue";
 import { PROFILES_KEY, db } from "../../FirebaseConfig";
+import { Profile } from "@/entities";
 
 const route = useRoute();
 const id = parseInt(route.params.id as string);
-const data = ref({});
+const data = ref<Profile>();
 
 onMounted(async () => {
   try {
     const q = query(collection(db, PROFILES_KEY), where("id", "==", id));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      data.value = doc.data();
+      data.value = doc.data() as Profile;
     });
   } catch (error) {
     console.error("エラーが発生しました:", error);
@@ -24,7 +25,13 @@ onMounted(async () => {
 <template>
   <div class="post">
     <dl>
-      <template v-for="item in data.profileFields">
+      <div
+        v-if="data?.profileImageUrl?.length"
+        style="display: flex; justify-content: center; margin-bottom: 20px"
+      >
+        <img :src="data.profileImageUrl" width="100" />
+      </div>
+      <template v-for="item in data?.profileFields">
         <div class="profile-item">
           <h2>{{ item.label }}</h2>
           <p>{{ item.value }}</p>
