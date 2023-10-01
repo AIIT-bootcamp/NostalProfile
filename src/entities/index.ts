@@ -8,4 +8,5 @@ export interface Profile {
   id: number;
   username: string;
   profileFields: ProfileField[];
+  profileImageUrl?: string;
 }
