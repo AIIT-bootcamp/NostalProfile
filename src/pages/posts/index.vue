@@ -51,11 +51,13 @@ h2 {
   background-color: #ffcccb; /* h2の背景色を追加してみたよ！💫 */
   display: block; /* 背景色を横いっぱいに広げるために display を block に変更！ */
   padding: 5px 0; /* 上下の余白を調整してみたよ！ */
+  font-family: "Brush Script MT", cursive;
 }
 
 p {
   font-size: 16px; /* 値のフォントサイズも調整してみたよ！✨ */
   color: #ffffff;
+  font-family: "Brush Script MT", cursive;
 }
 
 dl {
