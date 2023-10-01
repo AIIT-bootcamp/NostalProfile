@@ -1,20 +1,8 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-type ProfileField = {
-  id: number;
-  label: string;
-  value: string | number;
-  required?: boolean;
-};
-// interface User {
-//   id: string;
-//   name: string;
-//   email: string;
-//   password: string;
-//   profileFields: ProfileField[];
-//   createdAt: Date;
-//   updatedAt: Date;
-// }
+import { collection, addDoc } from "firebase/firestore";
+import { PROFILES_KEY, db } from "../../FirebaseConfig";
+import { ProfileField, Profile } from "@/entities/index";
 
 // model
 const _profileFields = [
@@ -45,7 +33,7 @@ const customFiled = reactive({
   value: "",
 });
 
-const addCustomField = () => {
+const addCustomField = async () => {
   profileFields.value.push({
     id: profileFields.value.length + 1,
     label: customFiled.label,
@@ -58,7 +46,25 @@ const addCustomField = () => {
   });
 };
 
-const submitForm = () => {};
+const randomId = () => {
+  return Math.floor(Math.random() * 100000000000000000);
+};
+
+const submitForm = async () => {
+  try {
+    // FIXME: 本当はusernameを"名前"としてprofileFieldsに追加したい
+    const putDoc: Profile = {
+      id: randomId(),
+      username: profileFields.value.filter((it) => it.label === "名前")[0]
+        .value as string,
+      profileFields: profileFields.value,
+    };
+    const docRef = await addDoc(collection(db, PROFILES_KEY), putDoc);
+    console.log("Document written: ", docRef);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
 
 const deleteField = (id: number) => {
   profileFields.value = profileFields.value.filter((field) => field.id !== id);
