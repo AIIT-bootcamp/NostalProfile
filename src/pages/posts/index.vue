@@ -16,17 +16,49 @@ onMounted(async () => {
       data.value = doc.data();
     });
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("エラーが発生しました:", error);
   }
 });
 </script>
 
 <template>
-  <div>
-    <h2>Post</h2>
-    <p>post content</p>
-    {{ data ?? "データがありません" }}
+  <div class="post">
+    <dl>
+      <template v-for="item in data.profileFields">
+        <div class="profile-item">
+          <h2>{{ item.label }}</h2>
+          <p>{{ item.value }}</p>
+        </div>
+      </template>
+    </dl>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.post {
+  background-color: #ff66b2;
+}
+
+.profile-item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 18px; /* ラベルを大きくしてみたよ！👑 */
+  color: #cd4187; /* ピンク色でアピール！💖 */
+  margin-bottom: 5px;
+  background-color: #ffcccb; /* h2の背景色を追加してみたよ！💫 */
+  display: block; /* 背景色を横いっぱいに広げるために display を block に変更！ */
+  padding: 5px 0; /* 上下の余白を調整してみたよ！ */
+}
+
+p {
+  font-size: 16px; /* 値のフォントサイズも調整してみたよ！✨ */
+  color: #ffffff;
+}
+
+dl {
+  padding: 5% 40%;
+}
+</style>
