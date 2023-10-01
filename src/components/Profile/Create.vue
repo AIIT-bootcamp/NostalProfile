@@ -135,80 +135,106 @@ const deleteField = (id: number) => {
   flex-direction: column;
   align-items: center;
   font-family: "Arial", sans-serif;
+  background-color: #fdeef4;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Hachi Maru Pop", cursive;
 }
 
-.title {
-  color: #444;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-}
-
+.title,
 .custum-field-title {
-  color: #444;
-  border-bottom: 2px solid #ddd;
+  color: #eb49a5;
+  border-bottom: 2px solid #ffbbdd;
+  text-shadow: 3px 3px 5px #ff66aa, -3px -3px 5px #ff66aa;
   padding-bottom: 8px;
+  text-align: center;
   margin-bottom: 20px;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #ff66aa;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 400px;
+  width: 30vw;
+  height: 100%;
+  max-width: 1000px;
 }
+.vacant-line {
+  margin: 0.5rem;
+}
+
 .custom-field-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.field {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 12px;
-}
-
+.field,
 .custom-field {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
+  width: 100%;
   margin-bottom: 12px;
 }
 
 .field > label {
   margin-bottom: 8px;
-  color: #666;
+  color: #ff4499; /* ギャルピンク */
+  font-weight: bold; /* 太字 */
+  font-size: 18px;
 }
 
 .field > input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 2px solid #ffbbdd; /* 明るいピンク色のボーダー */
   border-radius: 4px;
   font-size: 16px;
+  background-color: #fff1f3; /* ペールピンク */
+  transition: all 0.3s ease-in-out; /* スムーズな遷移 */
+}
+
+.field > input:hover {
+  box-shadow: 0px 0px 10px 0px rgba(255, 102, 170, 0.5);
 }
 
 .button {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #ff4499; /* ギャルピンク */
+  text-shadow: 2px 2px 4px #ff66aa, -2px -2px 4px #ff66aa;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 16px;
+  box-shadow: 0px 0px 10px 0px rgba(255, 102, 170, 0.7);
+  transition: transform 0.2s; /* スムーズな遷移 */
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #ff2266; /* 濃いピンク */
+  transform: scale(1.05); /* ホバー時に若干拡大 */
 }
 
 .delete-icon {
   margin-left: 10px;
   cursor: pointer;
-  color: red;
+  color: #ff2266; /* 濃いピンク */
+  font-size: 20px;
+  transition: transform 0.2s; /* スムーズな遷移 */
+}
+
+.delete-icon:hover {
+  transform: scale(1.2); /* ホバー時に拡大 */
+  color: #ff0044; /* より濃いピンク */
 }
 
 .custom-field-container {
