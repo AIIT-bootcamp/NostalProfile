@@ -13,19 +13,10 @@ import Create from "../components/Profile/Create.vue";
 .create-profile-page {
   background-color: #fdeef4;
   height: 95vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Brush Script MT", cursive; /* ギャル風のフォントに変更 */
-  background: linear-gradient(
-    100deg,
-    #fdeef4,
-    #ffd2e8,
-    #fbb1d1
-  ); /* キラキラとした背景 */
-  background-size: 600% 600%;
-  animation: gradientAnimation 10s infinite;
 }
 
 @keyframes gradientAnimation {

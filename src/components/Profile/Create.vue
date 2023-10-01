@@ -194,7 +194,7 @@ const deleteField = (id: number) => {
 
 .title,
 .custum-field-title {
-  color: #ff88cc;
+  color: #eb49a5;
   border-bottom: 2px solid #ffbbdd;
   text-shadow: 3px 3px 5px #ff66aa, -3px -3px 5px #ff66aa;
   padding-bottom: 8px;
@@ -208,9 +208,9 @@ const deleteField = (id: number) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80vw;
+  width: 30vw;
+  height: 100%;
   max-width: 1000px;
-  /* box-shadow: 0px 0px 15px 0px rgba(255, 102, 170, 0.7); */
 }
 .vacant-line {
   margin: 0.5rem;
