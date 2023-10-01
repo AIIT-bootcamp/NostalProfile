@@ -175,8 +175,6 @@ const deleteField = (id: number) => {
   </div>
 </template>
 
-<!-- ... -->
-
 <style scoped>
 .container {
   display: flex;
@@ -189,7 +187,7 @@ const deleteField = (id: number) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Brush Script MT", cursive;
+  font-family: "Hachi Maru Pop", cursive;
 }
 
 .title,
@@ -288,94 +286,5 @@ const deleteField = (id: number) => {
 .custom-field-container {
   margin-top: 40px;
   width: 80%;
-  /* box-shadow: 0px 0px 15px 0px rgba(255, 102, 170, 0.6); */
 }
 </style>
-
-<!-- <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Arial", sans-serif;
-}
-
-.title {
-  color: #444;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-}
-
-.custum-field-title {
-  color: #444;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-}
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-}
-.custom-field-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.field {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.custom-field {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.field > label {
-  margin-bottom: 8px;
-  color: #666;
-}
-
-.field > input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 16px;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
-.delete-icon {
-  margin-left: 10px;
-  cursor: pointer;
-  color: red;
-}
-
-.custom-field-container {
-  margin-top: 40px;
-  width: 80%;
-}
-</style> -->
